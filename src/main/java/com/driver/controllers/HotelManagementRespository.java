@@ -71,7 +71,7 @@ public class HotelManagementRespository {
             return  -1;
         }
 
-        booking.setBookingId(UUID.randomUUID().toString());
+        booking.setBookingId(String.valueOf(UUID.randomUUID()));
         int amountPaid = booking.getNoOfRooms() * hotel.getPricePerNight();
         hotel.setAvailableRooms(hotel.getAvailableRooms() - booking.getNoOfRooms());
         booking.setAmountToBePaid(amountPaid);
