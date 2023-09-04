@@ -63,6 +63,9 @@ public class HotelManagementRespository {
     }
 
     public int bookARoom(Booking booking) {
+
+        booking.setBookingId(String.valueOf(UUID.randomUUID()));
+
         String BID = booking.getBookingId();
         String hotelName = booking.getHotelName();
         Hotel hotel = hotelDB.get(hotelName);
@@ -71,7 +74,7 @@ public class HotelManagementRespository {
             return  -1;
         }
 
-        booking.setBookingId(String.valueOf(UUID.randomUUID()));
+
         int amountPaid = booking.getNoOfRooms() * hotel.getPricePerNight();
         hotel.setAvailableRooms(hotel.getAvailableRooms() - booking.getNoOfRooms());
         booking.setAmountToBePaid(amountPaid);
